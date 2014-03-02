@@ -3,7 +3,7 @@ require 'active_admin/parse_resource/version'
 require 'active_admin'
 require 'devise'
 require 'rails'
-require 'parse_resource'
+#require 'parse_resource'
 
 require 'active_admin/parse_resource/comments'
 require 'active_admin/parse_resource/adaptor'
