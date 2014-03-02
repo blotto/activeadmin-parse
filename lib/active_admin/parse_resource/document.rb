@@ -139,7 +139,7 @@ module ActiveAdmin::ParseResource::Document
   end
 end
 
-ParseResource::Document.send :include, ActiveAdmin::ParseResource::Document
-ParseResource::Document.send :include, MetaSearch::Searches::ParseResource
+ParseResource::Base.send :include, ActiveAdmin::ParseResource::Document
+ParseResource::Base.send :include, MetaSearch::Searches::ParseResource
 
 
