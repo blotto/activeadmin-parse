@@ -1,6 +1,6 @@
 require 'delegate'
 
-Mongoid::Criteria.class_eval do
+ParseResource::Criteria.class_eval do
   def relation *args, &block
     self
   end

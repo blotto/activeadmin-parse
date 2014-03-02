@@ -1,5 +1,5 @@
 module ActiveAdmin
-  module Mongoid
+  module ParseResource
     class Search
       attr_reader :base, :query, :query_hash, :search_params
 

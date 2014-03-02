@@ -1,7 +1,7 @@
 require 'delegate'
-require 'meta_search/searches/mongoid'
+require 'meta_search/searches/parse_resource'
 
-module ActiveAdmin::Mongoid::Document
+module ActiveAdmin::ParseResource::Document
   extend ActiveSupport::Concern
 
 
@@ -37,7 +37,7 @@ module ActiveAdmin::Mongoid::Document
   # CLASS METHODS
 
   included do
-    include MetaSearch::Searches::Mongoid
+    include MetaSearch::Searches::ParseResource
 
     unless respond_to? :primary_key
       class << self
@@ -95,7 +95,7 @@ module ActiveAdmin::Mongoid::Document
     def content_columns
       # cannot cache this, since changes in time (while defining fields)
       fields.map(&:second).reject do |f|
-        f.name =~ /(^_|^(created|updated)_at)/ or Mongoid::Fields::ForeignKey === f
+        f.name =~ /(^_|^(created|updated)_at)/ or ParseResource::Fields::ForeignKey === f
       end
     end
 
@@ -139,7 +139,7 @@ module ActiveAdmin::Mongoid::Document
   end
 end
 
-Mongoid::Document.send :include, ActiveAdmin::Mongoid::Document
-Mongoid::Document.send :include, MetaSearch::Searches::Mongoid
+ParseResource::Document.send :include, ActiveAdmin::ParseResource::Document
+ParseResource::Document.send :include, MetaSearch::Searches::ParseResource
 
 

@@ -1,20 +1,20 @@
-require 'active_admin/mongoid/version'
+require 'active_admin/parse_resource/version'
 # require 'active_admin/mongoid/engine'
 require 'active_admin'
 require 'devise'
 require 'rails'
-require 'mongoid'
+require 'parse_resource'
 
-require 'active_admin/mongoid/comments'
-require 'active_admin/mongoid/adaptor'
-require 'active_admin/mongoid/filter_form_builder'
-require 'active_admin/mongoid/resource'
-require 'active_admin/mongoid/document'
-require 'active_admin/mongoid/helpers/collection'
-require 'active_admin/mongoid/criteria'
+require 'active_admin/parse_resource/comments'
+require 'active_admin/parse_resource/adaptor'
+require 'active_admin/parse_resource/filter_form_builder'
+require 'active_admin/parse_resource/resource'
+require 'active_admin/parse_resource/document'
+require 'active_admin/parse_resource/helpers/collection'
+require 'active_admin/parse_resource/criteria'
 
 module ActiveAdmin
-  module Mongoid
+  module ParseResource
     class Railtie < ::Rails::Railtie
       config.after_initialize do
         I18n.backend.reload!
