@@ -1,5 +1,6 @@
 require 'active_support/concern'
-require 'rackspace'
+require 'ransack/search'
+require 'ransack'
 
 module MetaSearch
   module Searches
