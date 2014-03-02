@@ -6,7 +6,7 @@ module MetaSearch
   module Searches
 
     require 'delegate'
-    class MongoidSearchBuilder < SimpleDelegator
+    class MParseResourceSearchBuilder < SimpleDelegator
       def initialize relation, params, options
         super(relation)
         @relation = relation
@@ -93,23 +93,23 @@ module MetaSearch
 
       def metasearch_regexp
         field_names = klass.fields.map(&:second).map(&:name)
-        conditions = MetaSearch::DEFAULT_WHERES.map {|condition| condition[0...-1]} # pop tail options
+        conditions = Ransack::Constants.DERIVED_PREDICATES.map {|condition| condition[0...-1]} # pop tail options
 
         /\A(#{field_names.join('|')})_(#{conditions.join('|')})\z/
       end
 
     end
 
-    module Mongoid
+    module ParseResource
       extend ActiveSupport::Concern
 
       module ClassMethods
         def metasearch(params = nil, options = nil)
           options ||= {}
           params  ||= {}
-          MongoidSearchBuilder.new(criteria, params, options).build
+          ParseResourceSearchBuilder.new(criteria, params, options).build
         end
-        alias_method :search, :metasearch unless respond_to?(:search)
+        alias_method :q, :metasearch unless respond_to?(:q)
       end
 
     end
