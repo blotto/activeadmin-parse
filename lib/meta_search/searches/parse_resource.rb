@@ -1,12 +1,11 @@
 require 'active_support/concern'
-require 'meta_search/method'
-require 'meta_search/builder'
+require 'rackspace'
 
 module MetaSearch
   module Searches
 
     require 'delegate'
-    class MParseResourceSearchBuilder < SimpleDelegator
+    class ParseResourceSearchBuilder < SimpleDelegator
       def initialize relation, params, options
         super(relation)
         @relation = relation
