@@ -1,6 +1,6 @@
 require 'delegate'
 
-ParseResource::Criteria.class_eval do
+ParseResource::Query.class_eval do
   def relation *args, &block
     self
   end
