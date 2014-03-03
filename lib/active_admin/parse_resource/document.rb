@@ -138,17 +138,7 @@ module ActiveAdmin::ParseResource::Document
     end
 
     def scoped(options = nil)
-      if options
-        scoped.apply_finder_options(options)
-      else
-        if current_scope
-          current_scope.clone
-        else
-          scope = relation.clone
-          scope.default_scoped = true
-          scope
-        end
-      end
+      true
     end
   end
 end
